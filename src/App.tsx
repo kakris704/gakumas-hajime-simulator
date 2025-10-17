@@ -1,25 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
 import './App.css';
+import { createTheme, Stack, ThemeProvider } from '@mui/material';
+import Schedule from './components/schedule/Container'
+import InputArea from './components/inputSupport/Container'
+import ResultView from './components/resultView/Container'
 
 function App() {
+
+  const theme = createTheme({
+    typography: {
+      fontFamily: 'IBM Plex Sans JP',
+    }
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className='App' style={{width:"99vw",display:"flex",justifyContent:"center"}}>
+      
+      <Stack
+        direction="row" spacing={2}
+      >
+        <Schedule />
+        <Stack direction="column" spacing={5}>
+          <InputArea/>
+          <ResultView />
+        </Stack>
+      </Stack>
+      </div>
+      <div className='AppWrapper'></div>
+    </ThemeProvider>
   );
 }
 
