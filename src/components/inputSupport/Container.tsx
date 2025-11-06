@@ -14,7 +14,7 @@ const Container = () => {
   }
 
   return (
-    <Paper elevation={3} sx={{ height: "45%", width: "50vw", backgroundColor: "rgba(255,255,255,0.95)" }}>
+    <Paper elevation={3} sx={{  width: "50vw", backgroundColor: "rgba(255,255,255,0.95)" }}>
       <div style={{ padding: 35, paddingTop: 20 }}>
         <Typography variant='h4' sx={{ fontWeight: 600 }}>一般</Typography>
         <Grid container spacing={0} rowSpacing={3} sx={{ mt: 1 }}>

@@ -45,7 +45,7 @@ const Container = () => {
 	
 	return (
 		<>
-			<Paper sx={{ width: "50vw", height: "45%", display:"flex"}}>
+			<Paper sx={{ width: "50vw", display:"flex"}}>
 				<div style={{margin:5, width:"100%"}}>
 				{
 					isListFull(selectSchedule) && isClassConfirm(selectSchedule) ?

@@ -23,7 +23,10 @@ const Params = ({params}:{
     </div>
       <div style={{height:"4rem",borderBottom:"2px solid rgba(0,0,0,0.4)",display:"flex",alignItems:"end",justifyContent:"center",backgroundColor:"rgba(0,0,0,0.02)", position:"relative",width:"14rem"}}>
             <Typography variant="h6" sx={{fontWeight:"bold", left:5, bottom:4,color:"rgba(0,0,0,0.4)",position:"absolute"}}>Total</Typography>
-            <Typography variant="h3" sx={{color:"rgba(0,0,0,0.6)",position:"absolute",right:"2.2rem"}}>{typeof params[0] === 'number' ? (params as number[]).reduce((a:number, c:number) => a + c, 0) : '-'}</Typography>
+            {typeof params[0] === 'number' ?
+            <Typography variant="h3" sx={{color:"rgba(0,0,0,0.6)",position:"absolute",right:"2.2rem"}}>{(params as number[]).reduce((a:number, c:number) => a + c, 0)}</Typography> :
+            <Typography variant="h3" sx={{color:"rgba(0,0,0,0.6)",position:"absolute"}}>-</Typography>          
+          }
         </div>
     </div>
   )
