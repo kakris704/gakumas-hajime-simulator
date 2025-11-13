@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/gakumas-hajime-simulator/static/css/main.e2270f82.css",
-    "main.js": "/gakumas-hajime-simulator/static/js/main.be7b635d.js",
+    "main.css": "/gakumas-hajime-simulator/static/css/main.e4a946a8.css",
+    "main.js": "/gakumas-hajime-simulator/static/js/main.a28c7933.js",
     "static/js/453.365262c2.chunk.js": "/gakumas-hajime-simulator/static/js/453.365262c2.chunk.js",
     "index.html": "/gakumas-hajime-simulator/index.html",
-    "main.e2270f82.css.map": "/gakumas-hajime-simulator/static/css/main.e2270f82.css.map",
-    "main.be7b635d.js.map": "/gakumas-hajime-simulator/static/js/main.be7b635d.js.map",
+    "main.e4a946a8.css.map": "/gakumas-hajime-simulator/static/css/main.e4a946a8.css.map",
+    "main.a28c7933.js.map": "/gakumas-hajime-simulator/static/js/main.a28c7933.js.map",
     "453.365262c2.chunk.js.map": "/gakumas-hajime-simulator/static/js/453.365262c2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e2270f82.css",
-    "static/js/main.be7b635d.js"
+    "static/css/main.e4a946a8.css",
+    "static/js/main.a28c7933.js"
   ]
 }
