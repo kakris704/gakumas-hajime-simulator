@@ -21,7 +21,21 @@
   position: relative;
 }
 
-.App {
-  background-color: #AAC1D9;
+.scheduleWrapper {
+  overflow-y: auto;
+  height:100vh;
+  scrollbar-width: none;
 }
 
+.App {
+}
+
+body {
+  background-color: #AAC1D9;
+  overflow-y: hidden;
+}
+
+.right-contents {
+  height: 100vh;
+  overflow-y: scroll;
+}

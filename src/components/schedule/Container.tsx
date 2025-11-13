@@ -111,10 +111,10 @@ const Container = () => {
 
 
 	return (
-		<>
-			<Paper elevation={3} sx={{ height: "auto", width: "25vw", backgroundColor: "rgba(255,255,255,0.95)" }}>
+		<div className='schedules-wrapper'>
+			<Paper elevation={3} sx={{ height: "100vh", width: "25vw", backgroundColor: "rgba(255,255,255,0.95)" }}>
 				<div className='scheduleWrapper' style={{ padding: 25 }}>
-					<Stack direction="column" spacing={2} divider={<Divider orientation="horizontal" flexItem></Divider>}>
+					<Stack direction="column" spacing={2} divider={<Divider orientation="horizontal" flexItem></Divider>} sx={{marginBottom:6}}>
 						{
 							scheduleData.map((data, count) => {
 								if (data.week !== 'test') {
@@ -166,7 +166,7 @@ const Container = () => {
 				<MenuItem onClick={(e) => handleOpenMenu(e, 'dance')} sx={{ height: 22, backgroundColor: "#79EAFB", transition: ".2s ease", '&:hover': { backgroundColor: "#9BF2FF" } }}>Da</MenuItem>
 				<MenuItem onClick={(e) => handleOpenMenu(e, 'visual')} sx={{ height: 22, backgroundColor: "#FFD17B", transition: ".2s ease", '&:hover': { backgroundColor: "#FFDFA4" }, borderBottomLeftRadius: 5, borderBottomRightRadius: 5 }}>Vi</MenuItem>
 			</Menu>
-		</>
+		</div>
 	)
 }
 
