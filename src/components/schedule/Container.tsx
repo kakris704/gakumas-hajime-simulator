@@ -2,10 +2,11 @@ import { Box, Divider, Menu, MenuItem, Paper, Select, Stack, Typography } from '
 import React, { useEffect, useState } from 'react'
 import SelectButton from './SelectButton'
 import { useDispatch, useSelector } from 'react-redux';
-import { setSchedule } from '../../redux/scheduleSlice';
+import { resetSchedule, setSchedule } from '../../redux/scheduleSlice';
 
 const Container = () => {
 
+	const [selectedProduceSchedule, setSelectProduceSchedule] = useState<number>(0);
 
 	const dispatch = useDispatch(); // dispatchの宣言
 
@@ -82,11 +83,19 @@ const Container = () => {
 				return result;
 			});
 		}
+
 		// 授業ボタンだった場合、メニューを表示
 		if (type === 'class') {
 			setAnchorEl(e.currentTarget);
 			setOpenMenuWeek(group);
 		}
+
+		// 公開レッスンだった場合、メニューを表示
+		if(type === 'hif_vocal'||'hif_dance'||'hif_visual') {
+			setAnchorEl(e.currentTarget);
+			setOpenMenuWeek(group);
+		}
+
 		dispatchSelectSchedule(group, type);
 	}
 
@@ -108,6 +117,51 @@ const Container = () => {
 		dispatch(setSchedule({ week: week, schedule: dispSchedule }));
 	}
 
+	const handleScheduleSelector = (type: 'hajime_m'|'hif') => {
+		switch(type) {
+			case 'hajime_m':
+				setScheduleData([
+					{ types: ["class"], week: 'normal', classType: '', cIncrease: 50 },
+					{ types: ["class"], week: 'normal', classType: '', cIncrease: 50 },
+					{ types: ["provide", "goOut"], week: "normal" },
+					{ types: ["soudan", "goOut"], week: "normal" },
+					{ types: ["vocal", "dance", "visual"], week: "normal", increase: [60, 90] },
+					{ types: ["provide", "goOut", "soudan"], week: "normal" },
+					{ types: ["vocal", "dance", "visual"], week: "oikomi", increase: [90, 180] },
+					{ week: "test", types: [], increase: 20 },
+					{ types: ["provide", "goOut", "soudan"], week: "normal" },
+					{ types: ["class", "goOut"], week: 'normal', classType: '', cIncrease: 80 },
+					{ types: ["vocal", "dance", "visual"], week: "normal", increase: [110, 170] },
+					{ types: ["class", "goOut"], week: 'normal', classType: '', cIncrease: 110 },
+					{ types: ["provide", "goOut"], week: "normal" },
+					{ types: ["vocal", "dance", "visual"], week: "normal", increase: [120, 200] },
+					{ types: ["vocal", "dance", "visual", "class"], week: "normal", increase: [150, 220], cIncrease: 110 },
+					{ types: ["provide", "goOut", "soudan"], week: "normal" },
+					{ types: ["vocal", "dance", "visual"], week: "oikomi", increase: [145, 310] },
+					{ types: [], week: 'test', increase: 30 }
+				]);
+				setSelectProduceSchedule(0);
+				break;
+
+			case 'hif':
+				setScheduleData([
+					{ types: ["hif_vocal", "hif_dance", "hif_visual"], week: 'normal', increase: [145, 310] },
+					{ types: ["class"], week: 'normal', classType: '', cIncrease: 50 },
+					{ types: ["class"], week: 'normal', classType: '', cIncrease: 50 },
+					{ types: ["provide", "goOut"], week: "normal" },
+					{ week: "test", types: [], increase: 20 },
+					{ types: ["vocal", "dance", "visual"], week: "normal", increase: [120, 200] },
+					{ types: ["vocal", "dance", "visual", "class"], week: "normal", increase: [150, 220], cIncrease: 110 },
+					{ types: ["provide", "goOut", "soudan"], week: "normal" },
+					{ types: ["vocal", "dance", "visual"], week: "oikomi", increase: [145, 310] },
+					{ types: [], week: 'test', increase: 30 }
+				]);
+				setSelectProduceSchedule(1);
+		}
+		dispatch(resetSchedule());
+		setSchedulePerWeek([]);
+	}
+
 
 
 	return (
@@ -115,6 +169,13 @@ const Container = () => {
 			<Paper elevation={3} sx={{ height: "100vh", width: "25vw", backgroundColor: "rgba(255,255,255,0.95)" }}>
 				<div className='scheduleWrapper' style={{ padding: 25 }}>
 					<Stack direction="column" spacing={2} divider={<Divider orientation="horizontal" flexItem></Divider>} sx={{marginBottom:6}}>
+					<div className='scheduleHeader weekWrapper'>
+						<Stack spacing={1} direction="row">
+							<SelectButton handleClick={() => {handleScheduleSelector('hajime_m')}} type="hajime_m" index={0} group={0} schedule={[selectedProduceSchedule]} classData=""></SelectButton>
+							<SelectButton handleClick={() => {handleScheduleSelector('hif')}} type="hif" index={1} group={0} schedule={[selectedProduceSchedule]} classData=""></SelectButton>
+						</Stack>
+
+					</div>
 						{
 							scheduleData.map((data, count) => {
 								if (data.week !== 'test') {

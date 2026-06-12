@@ -8,9 +8,12 @@ export const scheduleSlice = createSlice({
         setSchedule: (state, {payload}) => {
             const {week, schedule} = payload;
             state[week] = schedule;
+        },
+        resetSchedule: (state) => {
+            state = [];
         }
     },
 });
 
-export const {setSchedule} = scheduleSlice.actions;
+export const {setSchedule, resetSchedule} = scheduleSlice.actions;
 export default scheduleSlice.reducer;
